@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>show_data</title>
+</head>
+<body>
+    <h1>I am showing data</h1>
+    <p>Hii !! I am {{data.name | upper}} !!</p>
+    <p>Hii !! I am {{data.name | lower}} !!</p>
+    <p>I am working professional and {{data.profession | title}}</p>
+    <p>I am working professional and {{data.profession | capfirst}}</p>
+    <p>I am working professional and {{data.profession | truncatewords:"3"}}</p>
+    <p>I am working professional and {{data.profession | linebreaks}}</p>
+    <p>My salary is {{data.salary}}</p>
+    <p>My salary is {{data.salary | divisibleby:2}}</p>
+    <p>number of student{{data.number_of_student | pluralize}} is {{data.number_of_student}}</p>
+
+    {% if data.age > 30 %}
+    <p>My age is {{data.age}}</p>
+    {% elif data.age == 20 %}
+    <p>I found exact age</p>
+    {% else %}
+    <p>no data found</p>
+    {% endif %}
+
+    <table border="1" cellpadding="2">
+        <tr style="background-color: red">
+            <th>Id</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>City</th>
+            <th>Course</th>
+            <th>Email</th>
+            <th>Marks</th>
+            <th>Attendence</th>
+        </tr>
+
+        {% for data in std_records %}
+        <tr style="background-color: {% cycle "red" "blue" "yellow" %}">
+            <td>{{data.id}}</td>
+            <td>{{data.name}}</td>
+            <td>{{data.age}}</td>
+            <td>{{data.city}}</td>
+            <td>{{data.course}}</td>
+            <td>{{data.email}}</td>
+            <td>{{data.marks}}</td>
+            <td>{{data.attendance}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
